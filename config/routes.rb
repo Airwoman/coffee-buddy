@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	root 'home#index'
+	get '/shop_show/:id' => 'home#shop_show', :as => 'shopshow'
 	#Casein routes
 	namespace :casein do
 		resources :products
