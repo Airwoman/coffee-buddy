@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	root 'home#index'
 	#Casein routes
 	namespace :casein do
+		resources :products
 		resources :shops
 	end
 
