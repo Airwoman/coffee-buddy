@@ -59,7 +59,7 @@ module Casein
     private
 
       def shop_params
-        params.require(:shop).permit(:name, :address, :phone, :website, :image)
+        params.require(:shop).permit(:name, :address, :phone, :website, :image, :longitude, :latitude)
       end
 
   end

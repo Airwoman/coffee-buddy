@@ -1,26 +1,45 @@
+<div class="row">
+  <div class= "col-sm-6" >
+      <%= image_tag @shop.image, :class => "img-thumbnail" %>
+  </div>
+  <div class="col-sm-3">
+    <div class="panel-warning">
+        <div class="panel-heading">
+            <h3><%= @shop.name %></h3>
+        </div>
+        <div class="panel-body">
+            Address:
+            <%= @shop.address %>
+        </div>
+        <div class="panel-body">
+            Phone:
+            <%= @shop.phone %>
+        </div>
+        <div class="panel-body">
+            Website:
+            <%= @shop.website %>
+        </div>
+        <div class="panel-body">
+            latitude:
+            <%= @shop.latitude %>
+        </div>
+        <div class="panel-body">
+            longitude:
+            <%= @shop.longitude %>
+        </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap%20&markers=#{@shop.latitude},#{@shop.longitude} "%>
+  </div>
+</div>
+<div class="row">
+<!-- &markers=#{@shop.latitude},#{@shop.longitude} -->
+</div>
 
-    <div class= "col-sm-8" >
-        <%= image_tag @shop.image, :class => "img-shop" %>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel-warning">
-          <div class="panel-heading">
-              <h3><%= @shop.name %></h3>
-          </div>
-          <div class="panel-body">
-              Address:
-              <%= @shop.address %>
-          </div>
-          <div class="panel-body">
-              Phone:
-              <%= @shop.phone %>
-          </div>
-          <div class="panel-body">
-              Website:
-              <%= @shop.website %>
-          </div>
-      </div>
-    </div>
+
+
+
 
 
 
