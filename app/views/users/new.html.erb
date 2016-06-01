@@ -1,0 +1,35 @@
+<h2>SignUp</h2>
+
+<%= form_for :user, url: users_path  do |form| %>
+
+<div class="row">
+	<div class="col-lg-6">
+		<%= casein_text_field form, @user, :login, {:size => 30, :casein_label => "Username"} %>
+	</div>
+	<div class="col-lg-6">
+		<%= casein_text_field form, @user, :name %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<%= casein_text_field form, @user, :email %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<%= casein_password_field form, @user, :password, {:casein_label => "Password"} %>
+	</div>
+	<div class="col-lg-6">
+		<%= casein_password_field form, @user, :password_confirmation, {:casein_label => "Repeat password"} %>
+	</div>
+</div>
+
+<p class="submits">
+	<%= link_to 'Cancel', users_path, :class => 'btn btn-mini btn-danger' %>
+	<%= form.submit "Add new user", :class => "btn btn-mini btn-primary" %>
+</p>
+
+
+<% end %>
