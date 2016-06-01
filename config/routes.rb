@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 	get '/login' => 'sessions#new', :as => 'login'
 	post '/login' => 'sessions#create'
 	delete '/logout' => 'sessions#destroy', :as => 'logout'
+	patch '/like/:shop_id'=> 'home#like', :as => 'like'
+	patch '/unlike/:shop_id'=> 'home#unlike', :as => 'unlike'
+
 
 	resources :users
 	#Casein routes

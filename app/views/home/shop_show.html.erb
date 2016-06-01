@@ -1,8 +1,27 @@
 <div class="row">
-  <div class= "col-sm-6" >
+  <div class= "col-sm-5" >
+    <div>
       <%= image_tag @shop.image, :class => "img-thumbnail" %>
+    </div>
+    <div>
+      Meet someone here
+      <%= form_tag("/Create Event", method: "get") do %>
+      <div class="input-group">
+        <%= label_tag(:date, "date:", class: "input-group-addon") %>
+        <%= text_field_tag(:date) %>
+
+        <%= label_tag(:time, "time:", class: "input-group-addon") %>
+        <%= text_field_tag(:time) %>
+      </div>
+        <%= submit_tag("Create Event", class: "btn btn-default") %>
+      <% end %>
+
+
+
+
+    </div>
   </div>
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <div class="panel-warning">
         <div class="panel-heading">
             <h3><%= @shop.name %></h3>
