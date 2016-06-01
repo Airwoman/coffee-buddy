@@ -11,8 +11,9 @@
  * file per style scope.
  *
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+ @import 'bootstrap-datetimepicker';
 
  .footer {
     margin-top: 4rem;
