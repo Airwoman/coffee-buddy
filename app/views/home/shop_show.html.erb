@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <%= form_tag("/Create Event", method: "get") do %>
                 <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
+                    <div class='input-group date' id='meetingDate'>
                         <input type='text' class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -57,6 +57,10 @@
         <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap%20&markers=#{@shop.latitude},#{@shop.longitude} "%>
     </div>
 </div>
-<div class="row">
-    <!-- &markers=#{@shop.latitude},#{@shop.longitude} -->
-</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#meetingDate').datetimepicker();
+    });
+</script>
