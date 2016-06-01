@@ -1,38 +1,58 @@
-<h2>View user</h2>
+<h2><%= @user.name%>Profile</h2>
 
-<%= form_for :user, url:user_path do |f| %>
-
-	<div class="row">
-  		<div class="col-lg-6">
-			<%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => "Username"} %>
+<div class="row">
+	<div class="col-xs-6 col-md-9">
+		<div class="input-group">
+			<span class="input-group-addon">User Login Name:</span>
+			<span class="form-control"><%= @user.login%></span>
 		</div>
-		<div class="col-lg-6">
-			<%= casein_text_field f, f.object, :name %>
+		<div><p></p></div>
+		<div class="input-group">
+			<span class="input-group-addon">User Name:</span>
+			<span class="form-control"><%= @user.name%></span>
 		</div>
-	</div>
-  <div class="row">
-      <div class="col-lg-6">
-      <%= casein_password_field f, f.object, :password, {:casein_label => "New password"} %>
-    </div>
-    <div class="col-lg-6">
-      <%= casein_password_field f, f.object, :password_confirmation, {:casein_label => "Repeat new password"} %>
-    </div>
-  </div>
-	<div class="row">
-  		<div class="col-lg-6">
-			<%= casein_text_field f, f.object, :email %>
+		<div><p></p></div>
+		<div class="input-group">
+			<span class="input-group-addon">User Email:</span>
+			<span class="form-control"><%= @user.email%></span>
 		</div>
-		<div class="col-lg-6">
-			<%= casein_file_field f, @user, @user.class.name.tableize.singularize, :avatar %>
-			<%= image_tag(@user.avatar_url) if @user.avatar?  %>
+		<div><p></p></div>
+		<div class="input-group">
+			<%= link_to "Edit your profile", edit_user_path, :class => "btn btn-danger"%>
 		</div>
 	</div>
-  <p class="submits">
-	  	<%= link_to 'Cancel', users_path, :class => 'btn btn-mini btn-danger' %>
-		<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
-	</p>
-
-
-
-
-<% end %>
+	<div class="col-xs-6 col-md-3">
+		<%= image_tag @user.avatar, :class => "img-thumbnail" %>
+	</div>
+</div>
+<div><p></p></div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="list-group">
+			<a href="#" class="list-group-item active">
+		    <h4 class="list-group-item-heading">My favorite coffee shops list</h4>
+		  </a>
+			<a href="#" class="list-group-item">
+		    <h6 class="list-group-item-heading">My favorite coffee shops list</h6>
+		  </a>
+  	</div>
+	</div>
+	<div class="col-md-4">
+		<div class="list-group">
+		  <a href="#" class="list-group-item disabled">My favorite cafes list</a>
+		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="list-group">
+		  <a href="#" class="list-group-item disabled">My dating history</a>
+		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+	</div>
+</div>

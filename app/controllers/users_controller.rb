@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @user = Casein::AdminUser.find params[:id]
   end
 
+  def edit
+    @user = Casein::AdminUser.find params[:id]
+  end
+
   def update
     @user = Casein::AdminUser.find params[:id]
     @user.update user_params
