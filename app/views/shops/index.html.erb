@@ -1,0 +1,25 @@
+<% @shops.in_groups_of(4).each do |group| %>
+  <div class='row'>
+    <% group.compact.each do |shop| %>
+      <div class="col-md-3">
+          <div class="thumbnail">
+              <a href=<%= shop_path(shop.id) %>><%= image_tag shop.image %></a>
+              <div class="caption">
+                  <h5><%= shop.name %></h5>
+                  <% if current_user && current_user.shops.find_by(id: shop.id) %>
+                    <%= link_to unlike_path(shop_id: shop.id), method: :patch do %>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    <% end%>
+                  <% else %>
+                    <%= link_to like_path(shop_id: shop.id), method: :patch do %>
+                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                  <%= shop.casein_admin_users.count %>
+                  likes
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

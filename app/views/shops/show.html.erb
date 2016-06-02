@@ -6,25 +6,28 @@
 
         <div class="panel panel-success">
             <div class="panel-heading">
-                Meet someone here
+                Meet someone at
+                <%= @shop.name %>
+                <%= @shop.meetings.count %>
             </div>
             <div class="panel-body">
-                <%= form_tag("/Create Event", method: "get") do %>
-                <div class="form-group">
-                    <div class='input-group date' id='meetingDate'>
-                        <input type='text' class="form-control"/>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="input-group pull-right">
-                    <%= submit_tag("Create Event", class: "btn btn-default") %>
-                </div>
+                <%= form_for :meeting, url: meetings_path, method: :post do |f|%>
+                  <div class="form-group">
+                      <div class='input-group date' id='meeting_date_time'>
+                          <div class="input-group pull-left">
+                              <%= f.text_field :meeting_date_time, class: "form-control" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                <%= f.hidden_field :shop_id, value: @shop.id %>
+                <%= f.submit "Create", class: 'btn btn-primary' %>
                 <% end %>
+
             </div>
         </div>
-
     </div>
     <div class="col-sm-4">
         <div class="panel-warning">
@@ -58,9 +61,8 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
     $(function () {
-        $('#meetingDate').datetimepicker();
+        $('#meeting_date_time').datetimepicker();
     });
 </script>

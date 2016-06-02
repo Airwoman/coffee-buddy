@@ -5,8 +5,10 @@ $CASEIN_USER_ACCESS_LEVEL_USER = 10
 
 module Casein
   class AdminUser < ActiveRecord::Base
-    
+
     has_and_belongs_to_many :shops
+    has_many :meetings
+    has_many :accepted_meetings, class_name: 'Meeting', foreign_key: :acceptor_id
     mount_uploader :avatar, ::AvatarUploader
 
 	  def self.table_name

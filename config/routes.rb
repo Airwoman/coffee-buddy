@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 	root 'home#index'
-	get '/shop_show/:id' => 'home#shop_show', :as => 'shopshow'
 	post '/users/:id' => 'users#update'
 	get '/login' => 'sessions#new', :as => 'login'
 	post '/login' => 'sessions#create'
 	delete '/logout' => 'sessions#destroy', :as => 'logout'
 	patch '/like/:shop_id'=> 'home#like', :as => 'like'
 	patch '/unlike/:shop_id'=> 'home#unlike', :as => 'unlike'
-
+	resources :shops, only: [:show, :index, :edit, :update]
+	resources :meetings, only: [:create]
 
 	resources :users
 	#Casein routes
