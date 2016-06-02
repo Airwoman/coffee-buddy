@@ -17,7 +17,7 @@
 
       <% @meetings.each do |meeting|%>
 
-      <a href="#" class="list-group-item">
+      <a href=<%= meeting_path(meeting.id) %> class="list-group-item">
         <div class="input-group">
           <div class="">
             <img alt="Brand" src="assets/male_sm.png">

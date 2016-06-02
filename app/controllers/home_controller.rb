@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @shops = Shop.take(12)
     @products = Product.take(5)
-    @meetings = Meeting.take(5)
+    @meetings = Meeting.all.order("id desc").limit(5)
   end
   def shop_show
     @shop = Shop.find params[:id]

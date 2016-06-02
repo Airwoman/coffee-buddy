@@ -14,6 +14,10 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def show
+    @meeting = Meeting.find params[:id]
+  end
+
   private
 
   def meeting_params

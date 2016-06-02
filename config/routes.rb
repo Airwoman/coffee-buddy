@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	patch '/like/:shop_id'=> 'home#like', :as => 'like'
 	patch '/unlike/:shop_id'=> 'home#unlike', :as => 'unlike'
 	resources :shops, only: [:show, :index, :edit, :update]
-	resources :meetings, only: [:create]
+	resources :meetings, only: [:create, :show]
 
 	resources :users
 	#Casein routes
