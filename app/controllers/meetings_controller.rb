@@ -18,6 +18,15 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find params[:id]
   end
 
+  def update
+    meeting = Meeting.find params[:id]
+    meeting.acceptor_id = current_user.id
+    meeting.readed = true
+    meeting.save
+    flash[:notice] = "successfully! Don't be late. :P"
+    redirect_to root_path
+  end
+
   private
 
   def meeting_params

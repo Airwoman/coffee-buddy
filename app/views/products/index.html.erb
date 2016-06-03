@@ -1,0 +1,20 @@
+
+
+<% @products.in_groups_of(4).each do |group| %>
+  <div class='row'>
+    <% group.compact.each do |product| %>
+      <div class="col-md-3">
+          <div class="thumbnail">
+              <%= image_tag product.coffee_image,:class => "img_preview" %>
+              <div class="caption">
+                  <h5><%= product.name %></h5>
+                  <%= product.ingredient %>
+              </div>
+              <div class="caption">
+                <%= product.description %>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
