@@ -1,60 +1,77 @@
-<div>
-
-<div class="col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-0">
-  <div class="col-sm-12 ">
-      <a href="#" class="list-group-item active">
-          <h5>Top Cafes</h5>
-      </a>
-      <% @products.each do |product|%>
-      <a href="#" class="list-group-item"><%= product.name %></a>
-      <% end %>
-  </div>
-  <div><p> &nbsp; </p></div>
-  <div class="col-sm-12 ">
-      <a href="#" class="list-group-item active">
-          <h5>New meetings released</h5>
-      </a>
-
-      <% @meetings.each do |meeting|%>
-
-      <a href=<%= meeting_path(meeting.id) %> class="list-group-item">
-        <div class="input-group">
-          <div class="">
-            <img alt="Brand" src="assets/male_sm.png">
+<div class="row">
+  <div class="col-md-3">
+    <div>
+        <a href="#" class="list-group-item active"><h5>Top Cafes</h5></a>
+        <% @products.each do |product|%>
+        <a href="#" class="list-group-item"><%= product.name %></a>
+        <% end %>
+    </div>
+    <div><p> &nbsp; </p></div>
+    <div>
+        <a href="#" class="list-group-item active"><h5>New meetings released</h5></a>
+        <% if current_user %>
+          <% @meetings.where.not(organizer: current_user).each do |meeting|%>
+          <a href=<%= meeting_path(meeting.id) %> class="list-group-item">
+            <div class="input-group">
+              <% if meeting.organizer.gender == 'Male'%>
+              <div class="">
+                <i class="fa fa-male" style="color: blue; " aria-hidden="true"></i> <%= meeting.organizer.name %>
+              </div>
+              <% else %>
+              <div class="">
+                <i class="fa fa-female" style="color: pink; " aria-hidden="true"></i> <%= meeting.organizer.name %>
+              </div>
+              <% end %>
+            </div>
+            <div class="input-group"><%= meeting.meeting_date_time %></div>
+          </a>
+          <% end %>
+        <% else %>
+        <% @meetings.each do |meeting|%>
+        <a href=<%= meeting_path(meeting.id) %> class="list-group-item">
+          <div class="input-group">
+            <% if meeting.organizer.gender == 'Male'%>
+            <div class="">
+              <i class="fa fa-male" style="color: blue; " aria-hidden="true"></i> <%= meeting.organizer.name %>
+            </div>
+            <% else %>
+            <div class="">
+              <i class="fa fa-female" style="color: pink; " aria-hidden="true"></i> <%= meeting.organizer.name %>
+            </div>
+            <% end %>
           </div>
-          <div class="">
-            <%= meeting.organizer.name %>
-          </div>
-        </div>
-        <div class="input-group"><%= meeting.meeting_date_time %></div>
-      </a>
-      <% end %>
+          <div class="input-group"><%= meeting.meeting_date_time %></div>
+        </a>
+        <% end %>
+        <% end %>
+    </div>
   </div>
-</div>
 
-<% @shops.in_groups_of(4).each do |group| %>
-<div class='col-md-9'>
-    <% group.compact.each do |shop| %>
-    <div class="col-sm-8 col-md-3">
-        <div class="thumbnail">
-            <a href=<%= shop_path(shop.id) %>><%= image_tag shop.image %></a>
-            <div class="caption">
-                <h5><%= shop.name %></h5>
-                <% if current_user && current_user.shops.find_by(id: shop.id) %>
-                  <%= link_to unlike_path(shop_id: shop.id), method: :patch do %>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                  <% end%>
-                <% else %>
-                  <%= link_to like_path(shop_id: shop.id), method: :patch do %>
-                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-                  <% end %>
-                <% end %>
-                <%= shop.casein_admin_users.count %> likes
+  <div class="col-md-9">
+    <% @shops.in_groups_of(4).each do |group| %>
+    <div class='row'>
+        <% group.compact.each do |shop| %>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a href=<%= shop_path(shop.id) %>><%= image_tag shop.image %></a>
+                <div class="caption">
+                    <h5><%= shop.name %></h5>
+                    <% if current_user && current_user.shops.find_by(id: shop.id) %>
+                      <%= link_to unlike_path(shop_id: shop.id), method: :patch do %>
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <% end%>
+                    <% else %>
+                      <%= link_to like_path(shop_id: shop.id), method: :patch do %>
+                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                      <% end %>
+                    <% end %>
+                    <%= shop.casein_admin_users.count %> likes
+                </div>
             </div>
         </div>
+        <% end %>
     </div>
     <% end %>
-</div>
-<% end %>
 
+  </div>
 </div>

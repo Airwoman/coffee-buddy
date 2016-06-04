@@ -1,32 +1,31 @@
 <div class="row">
-    <div class="col-sm-5">
-        <div>
-            <%= image_tag @shop.image, :class => "img-thumbnail" %>
-        </div>
-
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                Meet someone at
-                <%= @shop.name %>
-            </div>
-            <div class="panel-body">
-                <%= form_for :meeting, url: meetings_path, method: :post do |f|%>
-                  <div class="form-group">
-                      <div class='input-group date' id='meeting_date_time'>
-                          <div class="input-group pull-left">
-                              <%= f.text_field :meeting_date_time, class: "form-control" %>
-                              <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
-                          </div>
-                      </div>
-                  </div>
-                <%= f.hidden_field :shop_id, value: @shop.id %>
+  <div class="col-sm-5">
+    <div>
+      <%= image_tag @shop.image, :class => "img-thumbnail" %>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Meet someone at <%= @shop.name %>
+      </div>
+        <div class="panel-body">
+          <%= form_for :meeting, url: meetings_path, method: :post do |f|%>
+            <div class="form-group">
+              <div class='input-group date' id='meeting_date_time'>
+                <div class="input-group pull-left">
+                  <%= f.text_field :meeting_date_time, class: "form-control" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+              <div class="input-group pull_right">
                 <%= f.submit "Create", class: 'btn btn-primary' %>
-                <% end %>
-
+              </div>
             </div>
+          <%= f.hidden_field :shop_id, value: @shop.id %>
+          <% end %>
         </div>
+      </div>
     </div>
     <div class="col-sm-4">
         <div class="panel-warning">

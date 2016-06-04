@@ -18,6 +18,11 @@
 		</div>
 		<div><p></p></div>
 		<div class="input-group">
+			<span class="input-group-addon">Gender:</span>
+			<span class="form-control"><%= @user.gender%></span>
+		</div>
+		<div><p></p></div>
+		<div class="input-group">
 			<%= link_to "Edit your profile", edit_user_path, :class => "btn btn-danger"%>
 		</div>
 	</div>
@@ -41,24 +46,34 @@
 	</div>
 	<div class="col-md-4">
 		<div class="list-group">
-		  <a href="#" class="list-group-item disabled">My favorite coffee list</a>
-		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-		  <a href="#" class="list-group-item">Morbi leo risus</a>
-		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		  <a href="#" class="list-group-item disabled">Meeting I accepted</a>
+			<% @user.accepted_meetings.each do |meetingaccepted|%>
+			<a href="#" class="list-group-item">
+				<h6 class="list-group-item-heading"><%=meetingaccepted.meeting_date_time%>
+					<STRONG>@</STRONG> <%=meetingaccepted.shop.name%> <STRONG> with </STRONG> <%=meetingaccepted.organizer.name%></h6>
+			</a>
+			<% end %>
+
 		</div>
 	</div>
 	<div class="col-md-4">
 		<div class="list-group">
-		  <a href="#" class="list-group-item disabled">My dating history</a>
+		  <a href="#" class="list-group-item disabled">Meeting I created</a>
 
-		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-		  <a href="#" class="list-group-item">Morbi leo risus</a>
-		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			<% @user.meetings.each do |meeting|%>
+				<% if meeting.readed == true %>
+				<a href="#" class="list-group-item">
+			    <h6 class="list-group-item-heading"><%=meeting.meeting_date_time%>
+						<STRONG>@</STRONG> <%=meeting.shop.name%> <STRONG> with </STRONG> <%=meeting.acceptor.name%>
+						<i class="fa fa-check-square-o "></i></h6>
+			  </a>
+				<% else %>
+				<a href="#" class="list-group-item">
+			    <h6 class="list-group-item-heading"><%=meeting.meeting_date_time%>
+						<STRONG>@</STRONG> <%=meeting.shop.name%></h6>
+			  </a>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
-<!-- <div class="row" id="map">
- sssddddd
-</div> -->

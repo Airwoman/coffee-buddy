@@ -15,7 +15,18 @@
 	<div class="col-lg-6">
 		<%= casein_text_field form, @user, :email %>
 	</div>
+	<div class="col-lg-6">
+		<%= casein_file_field form, @user, @user.class.name.tableize.singularize, :avatars %>
+	</div>
 </div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<%= casein_select form, @user, :gender, casein_get_gender_array, {:casein_label => "Gender"} %>
+	</div>
+</div>
+
+
 
 <div class="row">
 	<div class="col-lg-6">
@@ -26,7 +37,7 @@
 	</div>
 </div>
 
-<p class="submits">
+<p class="submits pull-right">
 	<%= link_to 'Cancel', users_path, :class => 'btn btn-mini btn-danger' %>
 	<%= form.submit "Add new user", :class => "btn btn-mini btn-primary" %>
 </p>

@@ -34,6 +34,11 @@
   </div>
   <div class="row">
       <div>
+        <%= casein_select f, f.object, :gender, casein_get_gender_array, {:casein_label => "gender"} %>
+      </div>
+  </div>
+  <div class="row">
+      <div>
           <%= casein_file_field f, @user, @user.class.name.tableize.singularize, :avatar %>
       </div>
   </div>

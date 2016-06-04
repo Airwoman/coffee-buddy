@@ -22,10 +22,11 @@
 
 
 	<div class="row">
-  		<div class="col-lg-6">
+  	<div class="col-lg-6">
 			<%= casein_select form, @casein_admin_user, :access_level, casein_get_access_level_array, {:casein_label => "Role"} %>
 		</div>
 		<div class="col-lg-6">
+			<%= casein_select form, @casein_admin_user, :gender, casein_get_gender_array, {:casein_label => "Gender"} %>
 		</div>
 	</div>
 

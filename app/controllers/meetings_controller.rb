@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+  helper_method :current_user
+  before_filter :authorise
 
   def create
     meeting = Meeting.new(meeting_params)
@@ -16,6 +18,9 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find params[:id]
+    if @meeting.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def update

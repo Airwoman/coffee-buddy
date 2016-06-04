@@ -27,6 +27,7 @@
 				<%= casein_select f, f.object, :access_level, casein_get_access_level_array, {:casein_label => "Role"} %>
 			</div>
 			<div class="col-lg-6">
+				<%= casein_select f, f.object, :gender, casein_get_gender_array, {:casein_label => "gender"} %>
 			</div>
 		</div>
 	<% end %>

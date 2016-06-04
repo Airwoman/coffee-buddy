@@ -7,7 +7,7 @@ module Casein
   class AdminUser < ActiveRecord::Base
 
     has_and_belongs_to_many :shops
-    has_many :meetings
+    has_many :meetings, foreign_key: :user_id
     has_many :accepted_meetings, class_name: 'Meeting', foreign_key: :acceptor_id
     mount_uploader :avatar, ::AvatarUploader
 

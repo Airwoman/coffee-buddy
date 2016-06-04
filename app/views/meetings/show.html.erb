@@ -1,24 +1,30 @@
 
-<p>
-  Cafe for the meeting
-</p>
-<p>
-  <%= @meeting.shop.name%>
-</p>
-<p>
-  address:<%= @meeting.shop.address%>
-</p>
-<p>
-  <%= @meeting.organizer.name%>
-</p>
-<p>
-  <%= @meeting.meeting_date_time%>
-</p>
-<p>
-  <%= @meeting.readed%>
-</p>
 
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag @meeting.shop.image%>
 
-<%= form_for @meeting do |f| %>
-<%= f.submit "Take it now"%>
-<% end %>
+      <div class="caption">
+        <h3><%= @meeting.shop.name%></h3>
+        <p>
+          address:<%= @meeting.shop.address%>
+        </p>
+        <p>
+          <%= @meeting.meeting_date_time%>
+        </p>
+        <p>
+          <%= @meeting.organizer.name%>
+        </p>
+        <p>...</p>
+        <%= form_for @meeting do |f| %>
+        <%= f.submit "Take it now", class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+  </div>
+</div>

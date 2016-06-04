@@ -5,11 +5,14 @@
       <a class="navbar-brand" href="#">
         <img alt="Brand" src="/assets/coffee_buddy_logo.png" height="20px">
       </a>
-      <a class="navbar-brand" href="#">Coffee Buddy</a>
+      <%= link_to "Coffee Buddy", root_path, class: "navbar-brand"%>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-
-
-
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,7 +33,10 @@
         <li><%= link_to "Hi, #{current_user.name}", user_path(current_user.id) %></li>
         <li role="presentation">
           <%= link_to '#', :class => 'button white' do %>
-              Message <span class="badge">9</span>
+              Message
+              <span class="badge">
+                <%= current_user.meetings.where('readed' => true).count%>
+              </span>
           <% end %>
         </li>
         <li><%= link_to "Admin", casein_root_path %></li>
@@ -41,7 +47,10 @@
         <li><%= link_to "Hi, #{current_user.name}", user_path(current_user.id) %></li>
         <li role="presentation">
           <%= link_to '#', :class => 'button white' do %>
-              Message <span class="badge">9</span>
+              Message
+              <span class="badge">
+                <%= current_user.meetings.where('readed' => true).count%>
+              </span>
           <% end %>
         </li>
         <li><%= link_to "Logout", logout_path, :method => :delete %></li>
@@ -52,6 +61,7 @@
         <li><%= link_to "Login", login_path %><li>
       </ul>
       <% end %>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
