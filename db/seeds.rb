@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+harrison = Casein::AdminUser.create :name => 'harrison', :login => 'admin' :email=>'harrison.chow@hotmail.com', :password=> 'chicken', :password_confirmation=>'chicken'

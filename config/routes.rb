@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 	resources :products, only: [:index]
   patch '/meetings/:id' => 'meetings#update'
 
+	resources :locations,only: [:index]
+
 	resources :users
 	#Casein routes
 	namespace :casein do
