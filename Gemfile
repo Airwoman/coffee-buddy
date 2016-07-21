@@ -27,6 +27,7 @@ gem 'geocoder'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
 
